@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{:: .content},~{:: script})}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>luminex</title>
+</head>
+<body>
+  <div class="content">
+    <div class="content min-h-screen bg-cover bg-center flex justify-center items-center">
+      <div class="w-full max-w-md mx-auto bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 backdrop-blur-sm">
+        <div data-th-replace="message :: messageBox"></div>
+        <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-6">Login Here</h1>
+		
+		<div class="text-red-600 text-center" th:if="${param.error}">Invalid Username or Password</div>
+		<div class="text-green-600 text-center" th:if="${param.logout}">You have been logged out Successfully</div> 
+		<br/>
+        <form method="post" data-th-action="@{'/authenticate'}" class="space-y-6">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="you@example.com" required>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+            <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="••••••••" required>
+          </div>
+          
+          <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 dark:bg-indigo-500 dark:hover:bg-indigo-600">Login</button>
+        </form>
+
+        <!-- Social login buttons -->
+        <div class="flex flex-col space-y-4 mt-6">
+          <!-- Google login button -->
+          <a data-th-href="@{'/oauth2/authorization/google'}" class="w-full flex items-center justify-center py-2 px-4 bg-gray-100 text-gray-800 border border-gray-300 rounded-md shadow-sm hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white transition ease-in-out duration-150">
+            <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google logo" class="w-5 h-5 me-2">
+            <span>Login with Google</span>
+          </a>
+
+          <!-- GitHub login button -->
+          <a data-th-href="@{'/oauth2/authorization/github'}" class="w-full flex items-center justify-center py-2 px-4 bg-gray-100 text-gray-800 border border-gray-300 rounded-md shadow-sm hover:bg-gray-200 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white transition ease-in-out duration-150">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub logo" class="w-5 h-5 me-2">
+            <span>Login with GitHub</span>
+          </a>
+        </div>
+
+        <p class="text-sm text-center text-gray-600 dark:text-gray-400 mt-6">Don't have any account? <a data-th-href="@{'/signup'}" class="text-indigo-600 dark:text-indigo-400 hover:underline">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    console.log("Jay shree Ganesh");
+  </script>
+</body>
+</html>

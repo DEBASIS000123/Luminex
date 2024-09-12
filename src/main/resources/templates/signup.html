@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{:: .content},~{:: script})}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>luminex</title>
+</head>
+<body>
+  <div class="content">
+    <div class="content min-h-screen bg-cover bg-center flex justify-center items-center">
+     
+      <div class="w-full max-w-md mx-auto bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 backdrop-blur-sm">
+        <div data-th-replace="message :: messageBox"></div>
+        <h1 class="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 mb-6">Create an Account</h1>
+        <form data-th-object="${userform}" data-th-action="@{'/doregister'}" method="post" class="space-y-6">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <input type="email" id="email" data-th-field="*{email}" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="you@example.com" required>
+            
+          </div>
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+            <input type="text" id="username" data-th-field="*{name}" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="Name" required>
+            
+          </div>
+          <div>
+            <label for="contact" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact</label>
+            <input type="number" id="contact" data-th-field="*{phoneNumber}" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="Phone number " required>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+            <input type="password" id="password" data-th-field="*{password}" class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-200" placeholder="••••••••" required>
+          </div>
+          
+          <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150 dark:bg-indigo-500 dark:hover:bg-indigo-600">Sign Up</button>
+        </form>
+        <p class="text-sm text-center text-gray-600 dark:text-gray-400 mt-6">Already have an account? <a data-th-href="@{'/login'}" class="text-indigo-600 dark:text-indigo-400 hover:underline">Log in</a></p>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    console.log("Jay shree Ganesh");
+  </script>
+</body>
+</html>

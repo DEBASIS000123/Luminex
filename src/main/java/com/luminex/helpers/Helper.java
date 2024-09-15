@@ -1,6 +1,5 @@
 package com.luminex.helpers;
 
-import java.security.Principal;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;

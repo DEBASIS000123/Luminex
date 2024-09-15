@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base :: parent(~{:: .content},~{:: script})}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>luminex</title>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <a data-th-href="@{'/do-logout'}">logout</a>
+  <div class="content">
+  	<div th:if="${loggedinUser}">
+			<div data-th-replace="~{user/sidebar :: sidebar}"></div>
+	  </div>
+
+  <div class="mt-20 ml-64 text-center text-cyan-300">
+    <h1 class="text-5xl">Dashboard Page</h1>
+  </div>
+  
+  </div>
+
+  <script>
+    console.log("Jay shree Ganesh");
+  </script>
 </body>
 </html>

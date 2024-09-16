@@ -16,15 +16,19 @@
         <!-- Adjusted max width and padding for responsiveness -->
         <div class="max-w-2xl w-full bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-10 rounded-lg shadow-md">
           <h2 class="text-3xl font-bold mb-6 text-center text-yellow-400 dark:text-yellow-400">Add Contact Details</h2>
+          
+          <div data-th-replace="message :: messageBox"></div>
 
-          <form class="space-y-4" method="post" data-th-action="@{'/user/contacts/add'}" data-th-object="${ContactForm}" >
+          <form class="space-y-4" method="post" data-th-action="@{'/user/contacts/add'}" data-th-object="${ContactForm}">
             <!-- Contact Name -->
             <div>
               <label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Name</label>
               <div class="flex items-center border border-gray-300 dark:border-yellow-500 rounded-md p-2">
                 <img src="https://img.icons8.com/ios-filled/50/000000/user.png" class="icon w-5 h-5" alt="Contact Name Icon">
-                <input data-th-field="*{name}" name="name" type="text" id="contact-name" placeholder="Enter name" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100">
+                <input data-th-field="*{name}" name="name" type="text" id="contact-name" placeholder="Enter name" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100" required>
+				
               </div>
+			          
             </div>
 
             <!-- Contact Email -->
@@ -32,7 +36,7 @@
               <label for="contact-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Email</label>
               <div class="flex items-center border border-gray-300 dark:border-yellow-500 rounded-md p-2">
                 <img src="https://img.icons8.com/ios-filled/50/000000/email.png" class="icon w-5 h-5" alt="Email Icon">
-                <input data-th-field="*{email}" type="email" id="contact-email" placeholder="example@email.com" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100">
+                <input data-th-field="*{email}" type="email" id="contact-email" placeholder="example@email.com" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100" required>
               </div>
             </div>
 
@@ -41,7 +45,7 @@
               <label for="contact-number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Number</label>
               <div class="flex items-center border border-gray-300 dark:border-yellow-500 rounded-md p-2">
                 <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" class="icon w-5 h-5" alt="Phone Icon">
-                <input data-th-field="*{phoneNumber}" type="tel" id="contact-number" placeholder="+1234567890" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100">
+                <input data-th-field="*{phoneNumber}" type="tel" id="contact-number" placeholder="+1234567890" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100" required>
               </div>
             </div>
 
@@ -50,7 +54,7 @@
               <label for="contact-address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Address</label>
               <div class="flex items-center border border-gray-300 dark:border-yellow-500 rounded-md p-2">
                 <img src="https://img.icons8.com/ios-filled/50/000000/home.png" class="icon w-5 h-5" alt="Address Icon">
-                <input data-th-field="*{address}" type="text" id="contact-address" placeholder="123 Main St" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100">
+                <input data-th-field="*{address}" type="text" id="contact-address" placeholder="123 Main St" class="ml-2 w-full bg-transparent border-none focus:outline-none text-gray-900 dark:text-gray-100" required>
               </div>
             </div>
 

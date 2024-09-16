@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +15,13 @@ import com.luminex.entities.Contact;
 import com.luminex.entities.User;
 import com.luminex.forms.ContactForm;
 import com.luminex.helpers.Helper;
+import com.luminex.helpers.Message;
+import com.luminex.helpers.MessageType;
 import com.luminex.services.ContactService;
 import com.luminex.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -31,13 +38,20 @@ public class ContactController {
 	public String addContactView(Model model) {
 		ContactForm contactForm=new ContactForm();
 		model.addAttribute("ContactForm",contactForm);
-		contactForm.setName("Debasis Mishra");
-		contactForm.setFavorite(true);
 		return "user/add_contact";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String saveContact(@ModelAttribute ContactForm contactForm, Authentication authentication) {
+	public String saveContact( @ModelAttribute ContactForm contactForm,  BindingResult result,Authentication authentication,HttpSession session) {
+		
+		if(result.hasErrors()) {
+			session.setAttribute("message", Message.builder().content("Unable to Add the contact.").type(MessageType.red).build());
+			return "user/add_contact";
+		}
+		
+		
+		
+		
 		
 		String username=Helper.getEmailOfLoggedinUser(authentication);
 		
@@ -57,7 +71,7 @@ public class ContactController {
 		
 		contactService.save(contact);
 		
-		
+		session.setAttribute("message", Message.builder().content("Contact Added Succesfully.").type(MessageType.green).build());
 		return "redirect:/user/contacts/add";
 	}
 	

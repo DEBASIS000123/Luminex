@@ -19,7 +19,8 @@
           
           <div data-th-replace="message :: messageBox"></div>
 
-          <form class="space-y-4" method="post" data-th-action="@{'/user/contacts/add'}" data-th-object="${ContactForm}">
+          <form class="space-y-4" method="post" data-th-action="@{'/user/contacts/add'}" data-th-object="${ContactForm}" 
+		  enctype="multipart/form-data" >
             <!-- Contact Name -->
             <div>
               <label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Name</label>
@@ -86,7 +87,7 @@
             <!-- Upload Image -->
             <div>
               <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="default_size">Upload Image</label>
-              <input class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="default_size" type="file">
+              <input data-th-field="*{profileimage}" class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"  type="file" required>
             </div>
 
             <!-- Add to Favorite (Checkbox) -->

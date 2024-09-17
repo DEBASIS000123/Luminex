@@ -1,5 +1,6 @@
 package com.luminex.controller;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import com.luminex.helpers.Message;
 import com.luminex.helpers.MessageType;
 import com.luminex.services.ContactService;
 import com.luminex.services.UserService;
+import com.luminex.services.imageService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -28,8 +30,13 @@ import jakarta.validation.Valid;
 @RequestMapping("/user/contacts")
 public class ContactController {
 	
+	private Logger logger=org.slf4j.LoggerFactory.getLogger(ContactController.class);
+	
 	@Autowired
 	private ContactService contactService;
+	
+	@Autowired
+	private imageService imageservice;
 	
 	@Autowired
 	private UserService userService;
@@ -38,6 +45,8 @@ public class ContactController {
 	public String addContactView(Model model) {
 		ContactForm contactForm=new ContactForm();
 		model.addAttribute("ContactForm",contactForm);
+		contactForm.setName("Debasis Mishra");
+		contactForm.setFavorite(true);
 		return "user/add_contact";
 	}
 	
@@ -58,6 +67,11 @@ public class ContactController {
 		User user= userService.getUserByEmail(username);
 		//System.out.println(contactForm);
 		
+		//logger.info("file information :{}",contactForm.getProfileimage().getOriginalFilename());
+		
+		
+		String fileURL=imageservice.uploadImage(contactForm.getProfileimage());
+		
 		Contact contact =new Contact();
 		contact.setName(contactForm.getName());
         contact.setFavourite(contactForm.isFavorite());
@@ -68,10 +82,12 @@ public class ContactController {
         contact.setUser(user);
         contact.setFacebookLink(contactForm.getFacebookLink());
         contact.setInstaLink(contactForm.getInstaLink());
+		contact.setPicture(fileURL);
 		
 		contactService.save(contact);
 		
 		session.setAttribute("message", Message.builder().content("Contact Added Succesfully.").type(MessageType.green).build());
+		
 		return "redirect:/user/contacts/add";
 	}
 	

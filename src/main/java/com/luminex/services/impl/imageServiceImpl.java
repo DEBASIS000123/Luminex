@@ -22,15 +22,15 @@ public class imageServiceImpl implements imageService{
 	}
 
 	@Override
-	public String uploadImage(MultipartFile profileimage){
+	public String uploadImage(MultipartFile profileimage, String filename){
 		
-		String filename=UUID.randomUUID().toString();
+		//String filename=UUID.randomUUID().toString();
 		
 		try {
 			byte[] data=new byte[profileimage.getInputStream().available()];
 			
 			profileimage.getInputStream().read(data);
-			cloudnary.uploader().upload(data, ObjectUtils.asMap("public_id",profileimage.getOriginalFilename()));
+			cloudnary.uploader().upload(data, ObjectUtils.asMap("public_id",filename));
 			
 			return this.getUrlFromPublicId(filename);
 			

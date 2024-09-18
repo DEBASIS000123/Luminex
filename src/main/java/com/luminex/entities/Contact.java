@@ -35,6 +35,8 @@ public class Contact {
 	private String facebookLink;
 	private String instaLink;
 	
+	private String cloudnaryImagePublicId;
+	
 	@ManyToOne
 	private User user;
 	

@@ -1,5 +1,7 @@
 package com.luminex.controller;
 
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -45,8 +47,6 @@ public class ContactController {
 	public String addContactView(Model model) {
 		ContactForm contactForm=new ContactForm();
 		model.addAttribute("ContactForm",contactForm);
-		contactForm.setName("Debasis Mishra");
-		contactForm.setFavorite(true);
 		return "user/add_contact";
 	}
 	
@@ -69,8 +69,8 @@ public class ContactController {
 		
 		//logger.info("file information :{}",contactForm.getProfileimage().getOriginalFilename());
 		
-		
-		String fileURL=imageservice.uploadImage(contactForm.getProfileimage());
+		String filename=UUID.randomUUID().toString();		
+		String fileURL=imageservice.uploadImage(contactForm.getProfileimage(),filename);
 		
 		Contact contact =new Contact();
 		contact.setName(contactForm.getName());
@@ -83,6 +83,7 @@ public class ContactController {
         contact.setFacebookLink(contactForm.getFacebookLink());
         contact.setInstaLink(contactForm.getInstaLink());
 		contact.setPicture(fileURL);
+		contact.setCloudnaryImagePublicId(fileURL);
 		
 		contactService.save(contact);
 		

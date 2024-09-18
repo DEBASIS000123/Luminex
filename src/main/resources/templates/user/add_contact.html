@@ -87,7 +87,9 @@
             <!-- Upload Image -->
             <div>
               <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="default_size">Upload Image</label>
-              <input data-th-field="*{profileimage}" class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"  type="file" required>
+              <input data-th-field="*{profileimage}" class="block w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="image_file_input" type="file" required>
+
+              <img class="max-h-52 mx-auto rounded-lg"src="" id="upload_image_preview" alt="">
             </div>
 
             <!-- Add to Favorite (Checkbox) -->
@@ -105,6 +107,9 @@
 
   </div>
 
+  <script data-th-src="@{'/js/admin.js'}">
+
+  </script>
   <script>
     console.log("Jay shree Ganesh");
   </script>

@@ -3,6 +3,7 @@ package com.luminex.services;
 import java.util.List;
 
 import com.luminex.entities.Contact;
+import com.luminex.entities.User;
 
 public interface ContactService {
 
@@ -19,4 +20,6 @@ public interface ContactService {
 	List<Contact> search(String name,String email,String phoneNumber);
 	
 	List<Contact> getByUserId(String userID);
+	
+	List<Contact> getbyUser(User user);
 }

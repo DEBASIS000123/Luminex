@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.luminex.entities.Contact;
+import com.luminex.entities.User;
 import com.luminex.repositories.ContactRepo;
 import com.luminex.services.ContactService;
 
@@ -58,6 +59,12 @@ public class ContactServiceImpl implements ContactService{
 	public List<Contact> getByUserId(String userID) {
 		// TODO Auto-generated method stub
 		return contactRepo.findByUserId(userID);
+	}
+
+	@Override
+	public List<Contact> getbyUser(User user) {
+		return contactRepo.findByUser(user);
+		 
 	}
 
 }

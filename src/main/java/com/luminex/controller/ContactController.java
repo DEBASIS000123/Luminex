@@ -1,5 +1,6 @@
 package com.luminex.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -92,5 +93,14 @@ public class ContactController {
 		return "redirect:/user/contacts/add";
 	}
 	
+	@RequestMapping
+	public String viewContacts( Model model,Authentication authentication) {
+		
+		String usernmae=Helper.getEmailOfLoggedinUser(authentication);
+		User user=userService.getUserByEmail(usernmae);
+		List<Contact> contacts=contactService.getbyUser(user);
+		model.addAttribute("contacts",contacts);
+		return "user/contacts";
+	}
 	
 }

@@ -4,12 +4,17 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.luminex.entities.Contact;
 import com.luminex.entities.User;
 import com.luminex.repositories.ContactRepo;
 import com.luminex.services.ContactService;
+
+
 
 @Service
 public class ContactServiceImpl implements ContactService{
@@ -62,8 +67,14 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
-	public List<Contact> getbyUser(User user) {
-		return contactRepo.findByUser(user);
+	public Page<Contact> getbyUser(User user,int page ,int size,String sortBy,String direction) {
+		
+		Sort sort=direction.equals("desc")? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+		
+		var pageable=PageRequest.of(page, size,sort);
+		
+		
+		return contactRepo.findByUser(user,pageable);
 		 
 	}
 

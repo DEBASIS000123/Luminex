@@ -1,15 +1,14 @@
 package com.luminex.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +25,6 @@ import com.luminex.services.UserService;
 import com.luminex.services.imageService;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 
 @Controller
@@ -94,12 +92,16 @@ public class ContactController {
 	}
 	
 	@RequestMapping
-	public String viewContacts( Model model,Authentication authentication) {
+	public String viewContacts(@RequestParam(value="page",defaultValue = "0")int page,
+			@RequestParam(value="size",defaultValue = "10")int size,
+			@RequestParam(value = "sortBy",defaultValue = "name")String sortBy,
+			@RequestParam(value="direction",defaultValue = "asc")String direction,
+			Model model,Authentication authentication) {
 		
 		String usernmae=Helper.getEmailOfLoggedinUser(authentication);
 		User user=userService.getUserByEmail(usernmae);
-		List<Contact> contacts=contactService.getbyUser(user);
-		model.addAttribute("contacts",contacts);
+		Page<Contact> pageContact=contactService.getbyUser(user,page,size,sortBy,direction);
+		model.addAttribute("pageContact",pageContact);
 		return "user/contacts";
 	}
 	

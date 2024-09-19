@@ -2,6 +2,9 @@ package com.luminex.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.luminex.entities.Contact;
 import com.luminex.entities.User;
 
@@ -21,5 +24,5 @@ public interface ContactService {
 	
 	List<Contact> getByUserId(String userID);
 	
-	List<Contact> getbyUser(User user);
+	Page<Contact> getbyUser(User user,int page,int size,String sortField,String sortDirection);
 }

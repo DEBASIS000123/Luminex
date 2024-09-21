@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.luminex.entities.Contact;
 import com.luminex.entities.User;
 import com.luminex.forms.ContactForm;
+import com.luminex.helpers.AppConstants;
 import com.luminex.helpers.Helper;
 import com.luminex.helpers.Message;
 import com.luminex.helpers.MessageType;
@@ -93,7 +94,7 @@ public class ContactController {
 	
 	@RequestMapping
 	public String viewContacts(@RequestParam(value="page",defaultValue = "0")int page,
-			@RequestParam(value="size",defaultValue = "10")int size,
+			@RequestParam(value="size",defaultValue = AppConstants.PAGE_SIZE+"")int size,
 			@RequestParam(value = "sortBy",defaultValue = "name")String sortBy,
 			@RequestParam(value="direction",defaultValue = "asc")String direction,
 			Model model,Authentication authentication) {
@@ -102,6 +103,7 @@ public class ContactController {
 		User user=userService.getUserByEmail(usernmae);
 		Page<Contact> pageContact=contactService.getbyUser(user,page,size,sortBy,direction);
 		model.addAttribute("pageContact",pageContact);
+		model.addAttribute("pageSize",AppConstants.PAGE_SIZE);
 		return "user/contacts";
 	}
 	

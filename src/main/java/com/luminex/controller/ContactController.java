@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.luminex.entities.Contact;
 import com.luminex.entities.User;
 import com.luminex.forms.ContactForm;
+import com.luminex.forms.ContactSearchForm;
 import com.luminex.helpers.AppConstants;
 import com.luminex.helpers.Helper;
 import com.luminex.helpers.Message;
@@ -104,35 +105,38 @@ public class ContactController {
 		Page<Contact> pageContact = contactService.getbyUser(user, page, size, sortBy, direction);
 		model.addAttribute("pageContact", pageContact);
 		model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
+		
+		model.addAttribute("ContactSearchForm",new ContactSearchForm());
 		return "user/contacts";
 	}
 
 	@GetMapping("/search")
-	public String searchHandeler(@RequestParam("field") String field, @RequestParam("keyword") String value,
+	public String searchHandeler(@ModelAttribute ContactSearchForm contactSeacrchForm,
 			@RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
 			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
-			@RequestParam(value = "direction", defaultValue = "asc") String direction, Model model) {
+			@RequestParam(value = "direction", defaultValue = "asc") String direction, Model model,Authentication authentication) {
 		
-		//logger.info("field {} keyword {}", field, value);
-		//var user=userService.getUserByEmail(Helper.getEmailOfLoggedinUser(authentication));
+		logger.info("field {} keyword {}", contactSeacrchForm.getField(), contactSeacrchForm.getValue());
+		var user=userService.getUserByEmail(Helper.getEmailOfLoggedinUser(authentication));
 
 		Page<Contact> pageContact = null;
 		
-		if (field.equalsIgnoreCase("name")) {
-			pageContact = contactService.searchByName(value, size, page, sortBy, direction);
+		if (contactSeacrchForm.getField().equalsIgnoreCase("name")) {
+			pageContact = contactService.searchByName( contactSeacrchForm.getValue(), size, page, sortBy, direction,user);
 		} 
-		else if (field.equalsIgnoreCase("email")) {
-			pageContact = contactService.searchByEmail(value, size, page, sortBy, direction);
+		else if (contactSeacrchForm.getField().equalsIgnoreCase("email")) {
+			pageContact = contactService.searchByEmail( contactSeacrchForm.getValue(), size, page, sortBy, direction,user);
 
 		} 
-		else if (field.equalsIgnoreCase("phone")) {
-			pageContact = contactService.searchByPhoneNumber(value, size, page, sortBy, direction);
+		else if (contactSeacrchForm.getField().equalsIgnoreCase("phone")) {
+			pageContact = contactService.searchByPhoneNumber( contactSeacrchForm.getValue(), size, page, sortBy, direction,user);
 
 		}
 		logger.info("pageContact {}",pageContact);
 		model.addAttribute("pageContact",pageContact);
-
+		model.addAttribute("ContactSearchForm",contactSeacrchForm);
+		model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
 		
 		return "user/search";
 	}

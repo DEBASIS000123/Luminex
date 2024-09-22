@@ -726,6 +726,10 @@ video {
   margin-right: 1rem;
 }
 
+.mt-80 {
+  margin-top: 20rem;
+}
+
 .block {
   display: block;
 }
@@ -1198,6 +1202,10 @@ video {
   padding-top: 2.5rem;
 }
 
+.pt-60 {
+  padding-top: 15rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1239,6 +1247,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {

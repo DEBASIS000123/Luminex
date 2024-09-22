@@ -22,7 +22,7 @@ public interface ContactRepo extends JpaRepository<Contact, String>{
 	   List<Contact> findByUserId(@Param("userId") String userId);
 
 	 
-	 Page<Contact> findByNameContaining(String nameKeyword,Pageable pageable);
-	 Page<Contact> findByEmailContaining(String emailKeyword,Pageable pageable);
-	 Page<Contact> findByPhoneNumberContaining(String phoneKeyword,Pageable pageable);
+	 Page<Contact> findByUserAndNameContaining(User user,String nameKeyword,Pageable pageable);
+	 Page<Contact> findByUserAndEmailContaining(User user,String emailKeyword,Pageable pageable);
+	 Page<Contact> findByUserAndPhoneNumberContaining(User user,String phoneKeyword,Pageable pageable);
 }

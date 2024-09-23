@@ -118,9 +118,9 @@
                     </td>
                     <td class="px-6 py-4">
                         <div>
-                            <i class="fa-solid w-6 h-6 fa-trash"></i>
-                            <i class="fa-solid w-6 h-6 fa-pen"></i>
-                             <i class="fa-solid w-6 h-6 fa-eye"></i>
+                            <a href=""><i class="fa-solid w-6 h-6 fa-trash"></i></a>
+                            <a href=""><i class="fa-solid w-6 h-6 fa-pen"></i></a>
+                            <button th:data-id="${c.id}" th:onclick="loadContactdata(this.getAttribute('data-id'))"><i class="fa-solid w-6 h-6 fa-eye"></i></button>
                         </div>
                     </td>
                 </tr>
@@ -163,9 +163,11 @@
     </nav>
     </div>
 
+  <div data-th-replace="~{user/contact_model :: contact}"></div>
+  
   </div>
 
-
+  <script data-th-src="@{'/js/contacts.js'}"></script>
   <script>
     console.log("Jay shree Ganesh");
   </script>

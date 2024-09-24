@@ -43,7 +43,21 @@ async function loadContactdata(id){
       await fetch(`http://localhost:8080/api/contacts/${id}`)
     ).json();
     console.log(data);
-    console.log(data.name);
+   document.querySelector("#contact_name").innerHTML=data.name;
+   document.querySelector("#contact_email").innerHTML=data.email;
+   document.querySelector("#contact_phoneNumber").innerHTML=data.phoneNumber;
+   document.querySelector("#contact_picture").src=data.picture;
+   //document.querySelector("#contact_favourite").innerHTML=data.favourite;
+   // Assuming you get a `data` object from the API
+    if (data.favourite) {
+      document.querySelector("#favorite_button").textContent = "Favorites";
+    } else {
+      document.querySelector("#favorite_button").textContent = "not favorite";
+    }
+
+   document.querySelector("#contact_description").innerHTML=data.description;
+   document.querySelector("#contact_address").innerHTML=data.address;
+   openContactModal();
   }catch(error){
     console.log("Error: ",error);
   }

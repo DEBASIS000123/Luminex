@@ -118,8 +118,11 @@
                     </td>
                     <td class="px-6 py-4">
                         <div>
-                            <a href=""><i class="fa-solid w-6 h-6 fa-trash"></i></a>
-                            <a href=""><i class="fa-solid w-6 h-6 fa-pen"></i></a>
+                            
+                            <button th:onclick="deleteContact([[${c.id}]])"><i class="fa-solid w-6 h-6 fa-trash"></i></button>
+
+                            <button><i class="fa-solid w-6 h-6 fa-pen"></i></button>
+
                             <button th:data-id="${c.id}" th:onclick="loadContactdata(this.getAttribute('data-id'))"><i class="fa-solid w-6 h-6 fa-eye"></i></button>
                         </div>
                     </td>

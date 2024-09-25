@@ -762,6 +762,10 @@ video {
   height: 0.625rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .h-3 {
   height: 0.75rem;
 }
@@ -794,10 +798,6 @@ video {
   height: 100vh;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .max-h-52 {
   max-height: 13rem;
 }
@@ -816,6 +816,10 @@ video {
 
 .w-2\.5 {
   width: 0.625rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-3 {
@@ -854,12 +858,12 @@ video {
   width: 100%;
 }
 
-.w-24 {
-  width: 6rem;
-}
-
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .max-w-md {
@@ -868,10 +872,6 @@ video {
 
 .max-w-screen-xl {
   max-width: 1280px;
-}
-
-.max-w-lg {
-  max-width: 32rem;
 }
 
 .flex-1 {
@@ -957,6 +957,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1134,14 +1140,14 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-yellow-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
-}
-
 .bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
 .bg-cover {
@@ -1416,6 +1422,16 @@ video {
   color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.text-pink-500 {
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1477,11 +1493,6 @@ video {
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-800:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
@@ -1507,14 +1518,14 @@ video {
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-yellow-600:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-yellow-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-yellow-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-700:hover {
@@ -1530,6 +1541,16 @@ video {
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.hover\:text-blue-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+
+.hover\:text-pink-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(190 24 93 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -1879,6 +1900,16 @@ video {
   color: rgb(250 204 21 / var(--tw-text-opacity));
 }
 
+.dark\:text-blue-400:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+.dark\:text-pink-400:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(244 114 182 / var(--tw-text-opacity));
+}
+
 .dark\:placeholder-gray-400:where(.dark, .dark *)::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity));
@@ -1917,6 +1948,16 @@ video {
 .dark\:hover\:text-white:hover:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark\:hover\:text-blue-600:hover:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.dark\:hover\:text-pink-600:hover:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(219 39 119 / var(--tw-text-opacity));
 }
 
 .dark\:focus\:border-blue-500:focus:where(.dark, .dark *) {

@@ -119,11 +119,14 @@
                       </div>
                   </td>
                   <td class="px-6 py-4">
-                      <div>
-                          <i class="fa-solid w-6 h-6 fa-trash"></i>
-                          <i class="fa-solid w-6 h-6 fa-pen"></i>
-                           <i class="fa-solid w-6 h-6 fa-eye"></i>
-                      </div>
+                    <div>
+                            
+                      <button th:onclick="deleteContact([[${c.id}]])"><i class="fa-solid w-6 h-6 fa-trash"></i></button>
+
+                      <button><i class="fa-solid w-6 h-6 fa-pen"></i></button>
+
+                      <button th:data-id="${c.id}" th:onclick="loadContactdata(this.getAttribute('data-id'))"><i class="fa-solid w-6 h-6 fa-eye"></i></button>
+                  </div>
                   </td>
               </tr>
               
@@ -167,8 +170,10 @@
   <div data-th-if="${pageContact.empty}" class="text-center ">
     <h1 class="text-lg">No Results Found</h1>
   </div>
+  <div data-th-replace="~{user/contact_model :: contact}"></div>
   </div>
 
+  <script data-th-src="@{'/js/contacts.js'}"></script>
   <script>
     console.log("Jay shree Ganesh");
   </script>

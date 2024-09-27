@@ -36,4 +36,6 @@ public class ContactForm {
 	private String instaLink;
 	private MultipartFile profileimage;
 	
+	private String picture;
+	
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.luminex.entities.Contact;
 import com.luminex.entities.User;
+import com.luminex.helpers.ResourceNotFoundException;
 import com.luminex.repositories.ContactRepo;
 import com.luminex.services.ContactService;
 
@@ -31,8 +32,23 @@ public class ContactServiceImpl implements ContactService{
 
 	@Override
 	public Contact update(Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
+		var contactOld=	contactRepo.findById(contact.getId()).orElseThrow(()-> new ResourceNotFoundException("COntact Not Found"));
+		
+		contactOld.setName(contact.getName());
+		contactOld.setEmail(contact.getEmail());
+		contactOld.setPhoneNumber(contact.getPhoneNumber());
+		contactOld.setAddress(contact.getAddress());
+		contactOld.setDescription(contact.getDescription());
+		contactOld.setPicture(contact.getPicture());
+		contactOld.setFavourite(contact.isFavourite());
+		contactOld.setFacebookLink(contact.getFacebookLink());
+		contactOld.setInstaLink(contact.getInstaLink());
+		contactOld.setCloudnaryImagePublicId(contact.getCloudnaryImagePublicId());
+		
+		
+		
+		return contactRepo.save(contactOld);
+		
 	}
 
 	@Override

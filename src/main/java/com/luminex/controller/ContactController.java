@@ -153,7 +153,7 @@ public class ContactController {
 		
 	}
 	
-	@GetMapping("/view/{{contactid}}")
+	@GetMapping("/view/{contactid}")
 public String updateContactFormView(@PathVariable("contactid") String contactid, Model model) {
 		
 		var contact=contactService.getByID(contactid);
@@ -167,10 +167,39 @@ public String updateContactFormView(@PathVariable("contactid") String contactid,
 		contactForm.setFavorite(contact.isFavourite());
 		contactForm.setFacebookLink(contact.getFacebookLink());
 		contactForm.setInstaLink(contact.getInstaLink());
+		contactForm.setPicture(contact.getPicture());
 		
-		model.addAttribute("contactForm",contactForm);
+		model.addAttribute("ContactForm", contactForm);
+		model.addAttribute("contactId", contactid);
 		
 		return "user/update_contact_view";
 		
 	}
+	@RequestMapping(value="/update/{contactId}", method=RequestMethod.POST)
+	public String updateContact(@PathVariable("contactId") String contactid,@ModelAttribute ContactForm contactForm,Model model) {
+		
+		var con=contactService.getByID(contactid);
+		con.setId(contactid);
+		con.setName(contactForm.getName());
+		con.setEmail(contactForm.getEmail());
+		con.setPhoneNumber(contactForm.getPhoneNumber());
+		con.setAddress(contactForm.getAddress());
+		con.setDescription(contactForm.getDescription());
+		con.setFavourite(contactForm.isFavorite());
+		con.setFacebookLink(contactForm.getFacebookLink());
+		con.setInstaLink(contactForm.getInstaLink());
+		
+		if(contactForm.getProfileimage() != null && !contactForm.getProfileimage().isEmpty()) {
+			String fileName=UUID.randomUUID().toString();
+			String imageUrl=imageservice.uploadImage(contactForm.getProfileimage(), fileName);
+			con.setCloudnaryImagePublicId(imageUrl);
+			contactForm.setPicture(imageUrl);		
+			}
+		
+		var updateCon=contactService.update(con);
+		logger.info("upload contact{}",updateCon);
+		model.addAttribute("message", Message.builder().content("Contact Updated Succesfully.").type(MessageType.green));		
+		return "redirect:/user/contacts/view/"+contactid;
+	}
+	
 }

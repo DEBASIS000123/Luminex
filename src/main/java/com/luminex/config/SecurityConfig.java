@@ -1,5 +1,6 @@
 package com.luminex.config;
 
+import java.io.IOException;
 import java.util.logging.Handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,17 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import com.luminex.services.impl.SecurityCustomUserDetailService;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 public class SecurityConfig {
@@ -34,6 +41,9 @@ public class SecurityConfig {
 
     @Autowired
     private OAuthAuthenticationSuccessHandler handler;
+    
+    @Autowired
+    private AuthenticationFailureHandler authfailureHandeler;
 	
 	 @Bean
 	    public DaoAuthenticationProvider authenticationProvider() {
@@ -65,7 +75,8 @@ public class SecurityConfig {
 	            // formLogin.defaultSuccessUrl("/home");
 	            formLogin.usernameParameter("email");
 	            formLogin.passwordParameter("password");
-
+	            
+	            formLogin.failureHandler(authfailureHandeler);
 	        });
 
 	        
@@ -75,6 +86,11 @@ public class SecurityConfig {
 	        httpSecurity.logout(logoutForm -> {
 	            logoutForm.logoutUrl("/do-logout");
 	            logoutForm.logoutSuccessUrl("/login?logout=true");
+	            
+	            
+	            
+	            
+	            
 	        });
 
 	        

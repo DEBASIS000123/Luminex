@@ -75,7 +75,8 @@ public class PageController {
 		user.setPassword(userform.getPassword());
 		user.setAbout(userform.getAbout());
 		user.setPhoneNo(userform.getPhoneNumber());
-		user.setProfilePic("https://www.google.com/url?sa=i&url=https%3A");
+		user.setEnebled(false);
+		user.setProfilePic("https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png");
 		
 		User saveuser=userService.saveUser(user);
 		System.out.println("User Saved");

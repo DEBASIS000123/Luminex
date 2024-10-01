@@ -53,7 +53,7 @@ public class User implements UserDetails{
 	private String phoneNo;
 	
 	@Getter(value=AccessLevel.NONE)
-	private boolean enebled=true;
+	private boolean enebled=false;
 	private boolean emailVerfied=false;
 	private boolean phoneVerified=false;
 	

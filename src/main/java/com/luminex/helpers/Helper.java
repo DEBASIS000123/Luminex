@@ -9,6 +9,7 @@ public class Helper {
 	
 	//used to identify the username of the user
 	public static String getEmailOfLoggedinUser(Authentication authentication) {
+
 		if (authentication instanceof OAuth2AuthenticationToken) {
 			var aOAuth2AuthenticationToken = (OAuth2AuthenticationToken) authentication;
 			var clientId = aOAuth2AuthenticationToken.getAuthorizedClientRegistrationId();
@@ -42,5 +43,11 @@ public class Helper {
 
 		}
 
+	}
+	
+	public static String getLinkForEmailVerification(String emailToken) {
+		String link="http://localhost:8080/auth/verify-email?token="+emailToken;
+		
+		return link;
 	}
 }

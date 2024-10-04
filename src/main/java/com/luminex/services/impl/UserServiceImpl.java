@@ -1,6 +1,7 @@
 package com.luminex.services.impl;
 
 import com.luminex.helpers.AppConstants;
+import com.luminex.helpers.Helper;
 import com.luminex.helpers.ResourceNotFoundException;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.luminex.entities.User;
 import com.luminex.repositories.UserRepo;
+import com.luminex.services.EmailService;
 import com.luminex.services.UserService;
 
 @Service
@@ -28,6 +30,9 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	@Override
 	public User saveUser(User user) {
 		String userId=UUID.randomUUID().toString();
@@ -36,7 +41,16 @@ public class UserServiceImpl implements UserService{
 		
 		user.setRoleList(List.of(AppConstants.ROLE_USER));
 		logger.info(user.getProvider().toString());
-		return userRepo.save(user);
+		
+		
+		String emailToken=UUID.randomUUID().toString();
+		user.setEmailToken(emailToken);
+		User savedUser= userRepo.save(user);
+		String emailLink=Helper.getLinkForEmailVerification(emailToken);
+		
+		emailService.sendEmail(savedUser.getEmail(), "Verify Your Account : Email Luminex", emailLink);
+		
+		return savedUser;
 	}
 
 	@Override

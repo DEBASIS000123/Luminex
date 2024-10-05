@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styling for light and dark mode transitions */
+        html {
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen flex flex-col justify-center items-center transition-colors duration-300">
+
+  <div class="w-full max-w-lg">
+    <!-- Better Success Inline SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto w-40 sm:w-60 lg:w-72" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="4"></circle>
+        <path fill="currentColor" d="M23 31l6 6 12-12 3 3-15 15-9-9 3-3z"></path>
+    </svg>
+</div>
+
+    <!-- Success Message -->
+    <h1 class="mt-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
+        Hooray! 🎉 Your email has been successfully verified!
+    </h1>
+    <p class="mt-4 text-lg sm:text-xl lg:text-2xl text-center">
+        You’re all set to explore the awesome features we have for you.
+    </p>
+
+    <!-- Button to Go to Dashboard -->
+    <div class="mt-6">
+        <a href="/login" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white text-lg font-medium rounded-lg transition duration-300 ease-in-out">
+            Go to Login
+        </a>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <script>
+        // Dark mode toggle functionality
+        const toggleDarkMode = document.getElementById('toggleDarkMode');
+        const html = document.documentElement;
+
+        toggleDarkMode.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Load saved theme from localStorage
+        if (localStorage.getItem('theme') === 'dark') {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

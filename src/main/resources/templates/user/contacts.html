@@ -16,7 +16,11 @@
     <div>
       <h1 class="text-4xl text-green-600 mt-24 text-center">All Contact List</h1>
     </div>
-
+    <div class="mt-5 ml-2">
+      <button type="button" onclick="exportData()" class="bg-orange-500 text-white flex items-center p-2 border rounded-lg">
+        Export to ExcelFile <i class="fa-solid fa-download ml-1"></i>
+      </button>
+    </div>
     <div class="contact_container pt-10">
       
     
@@ -77,7 +81,7 @@
                 </div>
             </form>
         </div>
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table id="contact_table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     
@@ -170,9 +174,18 @@
   
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
   <script data-th-src="@{'/js/contacts.js'}"></script>
   <script>
     console.log("Jay shree Ganesh");
+    function exportData(){
+     TableToExcel.convert(document.getElementById("contact_table")),{
+      name:"contacts.xlsx",
+      sheet:{
+        name:"Luminex",
+      },
+     }
+    }
   </script>
 </body>
 </html>

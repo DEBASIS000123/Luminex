@@ -4,14 +4,239 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>luminex</title>
+  
 </head>
 <body>
   <div class="content pt-20">
-    <h1>Home page</h1>
+    <!-- Main Container -->
+<div class="relative h-screen bg-cover bg-center transition-all duration-500 dark:bg-black">
+  <!-- Background Image -->
+  <img data-th-src="@{'/images/Homebg.jpg'}" alt="Background" 
+    class="absolute inset-0 w-full h-full object-cover  transition-opacity duration-500">
+  
+  <!-- Overlay with two buttons in a line -->
+  <div class="relative z-10 flex items-center justify-center h-full space-x-6">
+    <!-- Button 1 -->
+    <a data-th-href="@{'/user/profile'}" class="px-8 py-4 bg-opacity-20 text-black font-bold rounded-lg shadow-lg transition-transform hover:scale-105 hover:bg-opacity-80 border border-white dark:bg-opacity-30 dark:hover:bg-opacity-50 dark:border-gray-700 hover:bg-slate-500">
+      Get Started
+    </a>
+    
+    
   </div>
+
+  <!-- Transition Black Screen -->
+  <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-500 hover:opacity-50"></div>
+</div>
+
+<!-- Section Below the Photo -->
+<section class="p-10 dark:text-white bg-white dark:bg-gray-900 text-center">
+  <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">About Our Luminex App</h2>
+  <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 pt-16">Easily manage all your contacts in one place. Keep your connections organized, sync across devices, and enjoy a modern, user-friendly experience.</p>
+  <p  class="p-5 bg-white dark:text-white dark:bg-gray-900 text-center">
+    This contact application provides a seamless and flexible way for users to manage their contacts. You can log in through multiple methods, including Google, GitHub, or manual sign-up, making access convenient and secure. Once logged in, users can easily add new contacts, view existing ones, edit contact information, and delete entries as needed. The app also allows you to upload contact pictures directly to the cloud for safe storage and quick access. Additionally, you can export your entire contact list as an Excel file for easy data sharing or backup. With support for both dark and light modes, the interface adapts to your preferences, offering a sleek and modern design that is both free and easy to use. Whether you’re managing personal or professional contacts, this app simplifies the process, making it an essential tool for organizing your connections efficiently.
+  </p>
+
+  <h2 class="text-3xl mt-20 font-bold text-gray-800 dark:text-white mb-4">Features</h2>
+  <div class="flex md:flex-row md:justify-between flex-col space-x-6 mt-16 ml-16 mr-14">
+    
+    <div class="p-4 ">
+      <img data-th-src="@{'/images/loginimg.jpg'}" alt="Feature 2" class="h-20 w-32 mx-auto mb-2">
+      <h4 class="font-semibold text-gray-800 dark:text-white">Easy login</h4>
+      <p class="text-gray-600 dark:text-gray-300">You can easily login to the luminex by login with Google and login with github Support.</p>
+    </div>
+    <div class="p-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr1Xv7BXfJChVXGi7WPIzsWLbnNZVzFHFt-w&s" alt="Feature 1" class="h-20 w-32 mx-auto mb-2">
+      <h4 class="font-semibold text-gray-800 dark:text-white">Upload to Clould</h4>
+      <p class="text-gray-600 dark:text-gray-300">You can add Your contact images into the cloud by just one click</p>
+    </div>
+    <div class="p-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_WsB04VJtFX5pIkwi9SsUtUt0ujhKRcq_EQ&s" alt="Feature 2" class="h-20 w-32 mx-auto mb-2">
+      <h4 class="font-semibold text-gray-800 dark:text-white">Save as Excel Sheet</h4>
+      <p class="text-gray-600 dark:text-gray-300">Offline support.You can add you conacts into the excel in one step.</p>
+    </div>
+    
+  </div>
+</section>
+
+  
+<section class="p-10 bg-gray-800 text-center text-white dark:bg-black">
+  <h2 class="text-3xl font-bold mb-4">Ready to Organize Your Contacts?</h2>
+  <p class="text-lg mb-6">Start managing your contacts today. It's free and easy to get started.</p>
+  <a data-th-href="@{'/user/profile'}">
+  <button class="px-8 py-4 bg-blue-500 hover:bg-blue-600 font-semibold rounded-lg shadow-lg transition-transform hover:scale-105">
+    Get Started
+  </button>
+</a>
+</section>
+
+<section class="p-10 bg-gray-100 dark:bg-gray-800 text-center">
+  <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">What Our Users Say</h2>
+  <div id="testimonial-container" class="flex justify-center">
+    <div class="max-w-xs p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg transition-opacity duration-500 ease-in-out hover:shadow-2xl transform hover:scale-105" id="testimonial-card">
+      <p class="text-gray-600 dark:text-gray-300 mb-4" id="testimonial-text">"This app helped me manage all my contacts effortlessly!"</p>
+      <div class="mt-4 flex items-center">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User 1" class="h-10 w-10 rounded-full mr-3 border-2 border-blue-500" id="user-image">
+        <div>
+          <h5 class="text-gray-800 dark:text-white font-semibold" id="user-name">John Doe</h5>
+          <p class="text-gray-500 dark:text-gray-400" id="user-role">Marketing Manager</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="next-btn" class="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">Next</button>
+</section>
+
+<section class="p-10 bg-white dark:bg-gray-900 text-left">
+  <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Frequently Asked Questions</h2>
+  <div class="space-y-4">
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">How do I sync my contacts?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">You can sync your contacts across devices by connecting your account to the cloud service in the settings.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Is my contact data secure?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">Yes, all your data is encrypted and securely stored to ensure privacy.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Can I upload pictures for my contacts?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">Absolutely! You can upload images for each contact, which will be stored securely in the cloud.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">How do I export my contacts?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">You can export your contacts as an Excel file through the settings menu. Just select the export option and follow the prompts.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">What should I do if I forget my password?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">If you forget your password, use the "Forgot Password?" link on the login page to reset it securely.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Can I use the app offline?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">Yes, you can access your contacts offline, but syncing will require an internet connection to update changes.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">What platforms is the app available on?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">The app is available on both iOS and Android devices, as well as a web version for desktop users.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Do I need an account to use the app?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">Yes, creating an account is necessary to access all features, including cloud syncing and backups.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Is there a limit to the number of contacts I can save?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">No, you can save an unlimited number of contacts in your account.</p>
+    </details>
+    <details class="border border-gray-300 rounded-lg p-4 dark:border-gray-700">
+      <summary class="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer">Can I delete a contact after adding it?</summary>
+      <p class="mt-2 text-gray-600 dark:text-gray-300">Yes, you can easily delete any contact from your list at any time.</p>
+    </details>
+  </div>
+</section>
+
+
+
+
+</div>
 
   <script>
     console.log("Jay shree Ganesh");
   </script>
+<script>
+  const testimonials = [
+    {
+      text: "This app helped me manage all my contacts effortlessly!",
+      name: "John Doe",
+      role: "Marketing Manager",
+      image: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    {
+      text: "A fantastic tool for organizing my contacts.",
+      name: "Jane Smith",
+      role: "Software Engineer",
+      image: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    {
+      text: "I love the user-friendly interface!",
+      name: "Alice Johnson",
+      role: "Product Designer",
+      image: "https://randomuser.me/api/portraits/women/1.jpg",
+    },
+    {
+      text: "This app makes communication a breeze!",
+      name: "Michael Brown",
+      role: "Sales Executive",
+      image: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    {
+      text: "An indispensable tool for networking.",
+      name: "Emily Davis",
+      role: "HR Specialist",
+      image: "https://randomuser.me/api/portraits/women/2.jpg",
+    },
+    {
+      text: "Helps me keep track of all my connections.",
+      name: "Chris Wilson",
+      role: "Business Analyst",
+      image: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+    {
+      text: "Highly recommend for anyone needing organization!",
+      name: "Jessica Garcia",
+      role: "Content Creator",
+      image: "https://randomuser.me/api/portraits/women/3.jpg",
+    },
+    {
+      text: "Saves me so much time with contact management!",
+      name: "David Martinez",
+      role: "Account Manager",
+      image: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    {
+      text: "The best app I've used for contacts!",
+      name: "Sarah Thompson",
+      role: "Entrepreneur",
+      image: "https://randomuser.me/api/portraits/women/4.jpg",
+    },
+    {
+      text: "Fantastic customer service and features.",
+      name: "Daniel Lee",
+      role: "Support Specialist",
+      image: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+  ];
+
+  let currentIndex = 0;
+
+  function updateTestimonial() {
+    const testimonial = testimonials[currentIndex];
+    document.getElementById("testimonial-text").innerText = testimonial.text;
+    document.getElementById("user-name").innerText = testimonial.name;
+    document.getElementById("user-role").innerText = testimonial.role;
+    document.getElementById("user-image").src = testimonial.image;
+
+    // Fade out effect before changing
+    const card = document.getElementById("testimonial-card");
+    card.style.opacity = 0; // Start fade out
+
+    setTimeout(() => {
+      card.style.opacity = 1; // Fade in after 300ms
+    }, 300);
+  }
+
+  document.getElementById("next-btn").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    updateTestimonial();
+  });
+
+  // Automatically change testimonial every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    updateTestimonial();
+  }, 5000);
+
+  // Initialize the first testimonial
+  updateTestimonial();
+</script>
+
+
 </body>
 </html>

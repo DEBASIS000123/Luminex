@@ -6,12 +6,78 @@
   <title>luminex</title>
 </head>
 <body>
-  <div class="content  pt-20">
-    <h1>contact page</h1>
+  <div class="content  pt-16">
+    <div class="min-h-screen  mt-20 flex flex-col items-center justify-center bg-cover bg-center p-4" style="background-image: url('your-background-image-url.jpg');">
+      <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-11/12 md:w-2/3 lg:w-1/2 mb-6">
+          <h1 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Contact Us</h1>
+          <form id="contactForm">
+              <div class="mb-4">
+                  <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name:</label>
+                  <input type="text" id="name" class="border border-gray-300 dark:border-gray-600 w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" required>
+              </div>
+              <div class="mb-4">
+                  <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email:</label>
+                  <input type="email" id="email" class="border border-gray-300 dark:border-gray-600 w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" required>
+              </div>
+              <div class="mb-4">
+                  <label for="contactNo" class="block text-gray-700 dark:text-gray-300 mb-2">Contact No:</label>
+                  <input type="text" id="contactNo" class="border border-gray-300 dark:border-gray-600 w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" required>
+              </div>
+              <div class="mb-4">
+                  <label for="problem" class="block text-gray-700 dark:text-gray-300 mb-2">Describe your problem:</label>
+                  <textarea id="problem" rows="4" class="border border-gray-300 dark:border-gray-600 w-full p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400" required></textarea>
+              </div>
+              <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                  Submit
+              </button>
+          </form>
+      </div>
+  
+      <div id="successPopup" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center mt-40">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center">
+              <svg class="w-16 h-16 mx-auto mb-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 1a9 9 0 100 18 9 9 0 000-18zm1 13.59l-3-3 1.41-1.41L11 11.17l2.59-2.59L15 10l-4 4z" />
+              </svg>
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Success!</h2>
+              <p class="text-gray-600 dark:text-gray-300">Your message has been sent successfully.</p>
+              <button id="closePopup" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Close
+              </button>
+          </div>
+      </div>
+  
+      <div class="mt-8 text-center text-gray-600 dark:text-gray-300 mb-6">
+          <h2 class="text-lg font-semibold mb-2">Developer Details</h2>
+          <p class="font-semibold">Name: <span class="text-blue-500">Debasis Mishra</span></p>
+          <p class="font-semibold">Email: <a href="mailto:debasismishra000123@gmail.com" class="text-blue-500 hover:underline">debasismishra000123@gmail.com</a></p>
+      </div>
+  
+      <div class="bg-black text-white text-center p-4 w-full">
+          <p>© 2024 Luminex. All rights reserved.</p>
+          <p>For any issues, please feel free to reach out!</p>
+      </div>
+  </div>
+  
+  
   </div>
 
   <script>
     console.log("Jay shree Ganesh");
+    // Handling form submission
+// Handling form submission
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    // Show success popup
+    document.getElementById('successPopup').classList.remove('hidden');
+});
+
+// Close the success popup
+document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('successPopup').classList.add('hidden');
+});
+
+
   </script>
+  
 </body>
 </html>

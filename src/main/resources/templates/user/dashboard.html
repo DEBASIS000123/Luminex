@@ -11,12 +11,200 @@
 			<div data-th-replace="~{user/sidebar :: sidebar}"></div>
 	  </div>
 
-  <div class="mt-20 md:ml-64 text-center text-cyan-300">
-    <h1 class="text-5xl">Dashboard Page</h1>
+  <div class="mt-20 md:ml-64">
+    <h2 class="text-4xl font-bold mb-14 text-center">Statistics Summary</h2>
+    <div class="container mx-auto p-4">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Cloud Storage Chart -->
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-semibold mb-2">Cloud Storage Usage</h3>
+          <canvas id="storageChart"></canvas>
+        </div>
+        <!-- Activity Chart -->
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-semibold mb-2">Recent Activity</h3>
+          <canvas id="activityChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-gray-100 dark:bg-gray-900 transition-colors">
+      <div class="container mx-auto p-5">
+          <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-5">Contact Distribution Statistics</h1>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Chart Section -->
+              <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                  <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Distribution Chart</h2>
+                  <canvas id="contactChart" width="400" height="300"></canvas>
+              </div>
+  
+              <!-- Statistics Section -->
+              <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                  <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Statistics</h2>
+                  <ul class="space-y-2">
+                      <li class="flex justify-between">
+                          <span class="text-gray-600 dark:text-gray-400">Total Contacts</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200">21</span>
+                      </li>
+                      <li class="flex justify-between">
+                          <span class="text-gray-600 dark:text-gray-400">Famliy</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200">07</span>
+                      </li>
+                      <li class="flex justify-between">
+                          <span class="text-gray-600 dark:text-gray-400">Friends</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200">12</span>
+                      </li>
+                      <li class="flex justify-between">
+                          <span class="text-gray-600 dark:text-gray-400">Other Contacts</span>
+                          <span class="font-bold text-gray-800 dark:text-gray-200">02</span>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  
+    
+  </div>
+  <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-3">Recent Activity Feed</h2>
+    <ul class="space-y-4">
+        <li class="flex justify-between items-center p-3 bg-green-100 dark:bg-green-800 rounded-lg">
+            <span class="text-gray-800 dark:text-gray-200">Added contact: John Doe</span>
+            <span class="text-gray-600 dark:text-gray-400 text-sm">10 minutes ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-blue-100 dark:bg-blue-800 rounded-lg">
+            <span class="text-gray-800 dark:text-gray-200">Uploaded photo: family_reunion.jpg</span>
+            <span class="text-gray-600 dark:text-gray-400 text-sm">20 minutes ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-yellow-100 dark:bg-yellow-800 rounded-lg">
+            <span class="text-gray-800 dark:text-black">Updated contact: Jane Smith</span>
+            <span class="text-gray-600 dark:text-black text-sm">30 minutes ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-red-100 dark:bg-red-800 rounded-lg">
+            <span class="text-gray-800 dark:text-gray-200">Deleted contact: Mark Taylor</span>
+            <span class="text-gray-600 dark:text-gray-400 text-sm">45 minutes ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-purple-100 dark:bg-purple-800 rounded-lg">
+            <span class="text-gray-800 dark:text-blue-800">Added contact: Alice Johnson</span>
+            <span class="text-gray-600 dark:text-blue-800 text-sm">1 hour ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-orange-100 dark:bg-orange-800 rounded-lg">
+            <span class="text-gray-800 dark:text-black">Uploaded photo: vacation.jpg</span>
+            <span class="text-gray-600 dark:text-black text-sm">2 hours ago</span>
+        </li>
+        <li class="flex justify-between items-center p-3 bg-teal-100 dark:bg-teal-800 rounded-lg">
+            <span class="text-gray-800 dark:text-gray-950">Updated preferences</span>
+            <span class="text-gray-600 dark:text-gray-950 text-sm">3 hours ago</span>
+        </li>
+    </ul>
+</div>
+
+<footer class="bg-white dark:bg-gray-800 p-5 mt-10 text-center">
+  <p class="text-gray-600 dark:text-gray-400">
+      &copy; 2024 Luminex. All rights reserved.
+  </p>
+  <p class="text-gray-600 dark:text-gray-400">
+      Support: <a href="mailto:support@luminex.com" class="text-blue-500 dark:text-blue-400 hover:underline">support@luminex.com</a>
+  </p>
+</footer>
+
+    
   </div>
   
   </div>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctxStorage = document.getElementById('storageChart').getContext('2d');
+    const storageChart = new Chart(ctxStorage, {
+      type: 'doughnut', // You can change to 'bar', 'line', etc.
+      data: {
+        labels: ['Used', 'Available'],
+        datasets: [{
+          label: 'Storage',
+          data: [3,97], // Example data
+          backgroundColor: ['#3b82f6', '#e5e7eb'],
+          borderWidth: 1,
+        }],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+          },
+        },
+      },
+    });
+  
+    const ctxActivity = document.getElementById('activityChart').getContext('2d');
+    const activityChart = new Chart(ctxActivity, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], // Example months
+        datasets: [{
+          label: 'Activities',
+          data: [5, 1, 15, 10, 25, 11], // Example activity data
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderWidth: 2,
+          fill: true,
+        }],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  </script>
+    <script>
+      const ctx = document.getElementById('contactChart').getContext('2d');
+      const contactChart = new Chart(ctx, {
+          type: 'pie', // You can change this to 'bar', 'line', etc.
+          data: {
+              labels: ['family', 'friends', 'Other Contacts'],
+              datasets: [{
+                  label: 'Contact Distribution',
+                  data: [7, 12, 2], // Example data
+                  backgroundColor: [
+                      'rgba(75, 192, 192, 0.6)',
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)'
+                  ],
+                  borderColor: [
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              plugins: {
+                  legend: {
+                      position: 'top',
+                  },
+                  title: {
+                      display: true,
+                      text: 'Contact Distribution'
+                  }
+              }
+          }
+      });
+  </script>
   <script>
     console.log("Jay shree Ganesh");
   </script>

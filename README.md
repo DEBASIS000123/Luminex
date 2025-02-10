@@ -4,7 +4,7 @@
 
 Luminex is a stylish and modern contact management app built with Spring Boot and Tailwind CSS. It allows users to securely store and manage contacts in the cloud, upload photos, and add essential details. The app supports seamless login via GitHub and Google for quick access. With an intuitive and responsive UI, Luminex ensures a smooth user experience across all devices. Users can edit, delete, and export contacts as an Excel sheet effortlessly. The platform is completely free for the first six months. Luminex prioritizes data security and efficient contact organization. Experience hassle-free contact management with Luminex today!
 
-## Features
+## Page Overview
 
 | Banner                                                                                                                                  | Details                                                                                                                                                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15,3 +15,65 @@ Luminex is a stylish and modern contact management app built with Spring Boot an
 | <img src="https://github.com/DEBASIS000123/Luminex/blob/main/src/main/resources/Static/images/ReadmeImg/userprofile.jpg" width="700">   | ✧ User Profile <br> User can see the Profiles of contacts with contact Information Easily.                                                                                                         |
 | <img src="https://github.com/DEBASIS000123/Luminex/blob/main/src/main/resources/Static/images/ReadmeImg/add%20contact.jpg" width="700"> | ✧ Add Contacts <br> This is the page dedicated for adding new contact details where you will be allowed to upload name , contact , Address, About, Social Links , profile Image, Favorite or not . |
 | <img src="https://github.com/DEBASIS000123/Luminex/blob/main/src/main/resources/Static/images/ReadmeImg/contactlist.jpg" width="700">   | ✧ Contact List <br> Here is the Option where The user can access all the contacts and Export in a excel File,and also edit view and delete contat task also done in this page.                     |
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="https://github.com/DEBASIS000123/Luminex/blob/main/src/main/resources/Static/images/ReadmeImg/login.jpg" alt="login" width="300"/></td>
+      <td align="center"><img src="https://github.com/DEBASIS000123/Luminex/blob/main/src/main/resources/Static/images/ReadmeImg/signUp.jpg" alt="signup" width="300"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Login</b> <br/> The login page allows users to sign in manually using email and password or authenticate via GitHub and Google for a faster login experience.</td>
+      <td align="center"><b>SignUp</b> <br/> It features a responsive design with light and dark mode support, ensuring a smooth and user-friendly experience.</td>
+    </tr>
+  </table>
+</div>
+
+### 🚀 Tech Stack
+
+- HTML
+- Tailwind CSS
+- Bootstrap
+- SpringBoot
+- Java
+- JavaScript
+- OAuth
+- Hibernate
+- My Sql
+- Google/Github API
+- Cloudinary
+
+### 📌 Features of the Project
+
+- Easy,Smooth Login with Github and Google.
+- Upload Contact details with Picture and Links.
+- See Profile, Delete, Edit Contact Details.
+- Download Contact as excel Sheet.
+- Responsive with Day-Night Mode.
+- Free To use
+- Save Images inro cloud
+
+### 📜 How to Run
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/your-repo.git
+
+# Change directory
+cd your-repo
+
+# Build the project (if using Maven)
+mvn clean install
+
+# Or, if using Gradle
+./gradlew build
+
+# Run the Spring Boot application
+mvn spring-boot:run
+
+# Or, if using Gradle
+./gradlew bootRun
+
+
+
+```
